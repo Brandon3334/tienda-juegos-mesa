@@ -51,10 +51,8 @@ Aplicación web desarrollada con Django para administrar y consultar un catálog
 1. Clonar el repositorio:
 
    ```powershell
-   git clone URL_DEL_REPOSITORIO
+   git clone https://github.com/Brandon3334/tienda-juegos-mesa.git
    ```
-
-   `URL_DEL_REPOSITORIO` se reemplazará después de crear el repositorio remoto.
 
 2. Entrar a la carpeta:
 
