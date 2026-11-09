@@ -4,5 +4,8 @@ __pycache__/
 *$py.class
 .vscode/
 .idea/
+.env
+.env.*
+!.env.example
 .DS_Store
 Thumbs.db

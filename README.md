@@ -110,6 +110,16 @@ Aplicación web desarrollada con Django para administrar y consultar un catálog
    - Catálogo: <http://127.0.0.1:8000/>
    - Administración: <http://127.0.0.1:8000/admin/>
 
+## Variable de entorno opcional
+
+Para mantener una clave estable durante el desarrollo, se puede configurar en PowerShell:
+
+```powershell
+$env:DJANGO_SECRET_KEY = "REEMPLAZAR_POR_UNA_CLAVE_LOCAL_SEGURA"
+```
+
+El valor mostrado es un ejemplo y debe reemplazarse localmente. No debe escribirse en el repositorio. Si no se configura, Django genera una clave temporal adecuada para la demostración local. En producción siempre debe configurarse una variable privada y estable.
+
 ## Datos incluidos
 
 - 3 categorías.
