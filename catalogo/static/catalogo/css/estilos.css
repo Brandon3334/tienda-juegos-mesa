@@ -89,7 +89,8 @@ button {
 }
 
 button,
-.boton-secundario {
+.boton-secundario,
+.boton-principal {
     border: 0;
     border-radius: 0.35rem;
     background: var(--azul-claro);
@@ -175,6 +176,77 @@ button {
     padding: 0.6rem 0.9rem;
 }
 
+.boton-principal {
+    display: inline-block;
+    margin-top: 0.5rem;
+    padding: 0.6rem 0.9rem;
+}
+
+.formulario-pedido,
+.comprobante {
+    max-width: 760px;
+    margin: 2rem auto;
+    padding: 1.5rem;
+    border: 1px solid var(--borde);
+    border-radius: 0.6rem;
+    background: white;
+}
+
+.resumen-juego {
+    display: grid;
+    grid-template-columns: 160px 1fr;
+    gap: 1rem;
+    align-items: center;
+    margin-bottom: 1.5rem;
+}
+
+.resumen-juego img {
+    width: 160px;
+    height: 190px;
+    object-fit: cover;
+}
+
+.resumen-juego .imagen-reemplazo {
+    height: 190px;
+}
+
+.campo-formulario {
+    display: flex;
+    flex-direction: column;
+    gap: 0.35rem;
+    margin-bottom: 1rem;
+}
+
+.mensaje-error,
+.errores-generales {
+    color: var(--rojo);
+}
+
+.datos-pedido {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 0.75rem;
+    margin: 1.5rem 0;
+}
+
+.datos-pedido div {
+    padding: 0.75rem;
+    border: 1px solid var(--borde);
+    border-radius: 0.35rem;
+}
+
+.datos-pedido dt {
+    font-weight: bold;
+}
+
+.datos-pedido dd {
+    margin: 0.25rem 0 0;
+}
+
+.codigo-pedido {
+    font-size: 1.1rem;
+}
+
 .imagen-reemplazo {
     display: grid;
     height: 220px;
@@ -247,7 +319,12 @@ button {
     }
 
     .detalle,
-    .datos-juego {
+    .datos-juego,
+    .datos-pedido {
+        grid-template-columns: 1fr;
+    }
+
+    .resumen-juego {
         grid-template-columns: 1fr;
     }
 }

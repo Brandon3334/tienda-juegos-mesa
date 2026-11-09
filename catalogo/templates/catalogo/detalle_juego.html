@@ -24,6 +24,7 @@
         </dl>
         {% if juego.stock > 0 %}
             <p class="estado disponible">Disponible para solicitar</p>
+            <a class="boton-principal" href="{% url 'catalogo:crear_pedido' juego.id %}">Realizar pedido</a>
         {% else %}
             <p class="estado agotado">Agotado</p>
         {% endif %}

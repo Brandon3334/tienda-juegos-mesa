@@ -1,0 +1,23 @@
+{% extends "catalogo/base.html" %}
+{% load formato_chileno %}
+
+{% block title %}Pedido confirmado | Tienda de Juegos{% endblock %}
+
+{% block content %}
+<section class="comprobante">
+    <h1>Pedido confirmado</h1>
+    <p class="codigo-pedido">Código del pedido: <strong>{{ pedido.codigo }}</strong></p>
+    <dl class="datos-pedido">
+        <div><dt>Fecha y hora</dt><dd>{{ pedido.fecha_hora|date:"d/m/Y H:i" }}</dd></div>
+        <div><dt>Nombre del cliente</dt><dd>{{ pedido.nombre_cliente }}</dd></div>
+        <div><dt>Correo electrónico</dt><dd>{{ pedido.correo }}</dd></div>
+        <div><dt>Teléfono</dt><dd>{{ pedido.telefono }}</dd></div>
+        <div><dt>Juego</dt><dd>{{ pedido.juego.nombre }}</dd></div>
+        <div><dt>Categoría</dt><dd>{{ pedido.juego.categoria.nombre }}</dd></div>
+        <div><dt>Cantidad</dt><dd>{{ pedido.cantidad }}</dd></div>
+        <div><dt>Precio unitario</dt><dd>{{ pedido.juego.precio|pesos_chilenos }}</dd></div>
+        <div><dt>Total</dt><dd>{{ total|pesos_chilenos }}</dd></div>
+    </dl>
+    <a class="boton-secundario" href="{% url 'catalogo:catalogo' %}">Volver al catálogo</a>
+</section>
+{% endblock %}

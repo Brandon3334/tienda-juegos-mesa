@@ -1,0 +1,44 @@
+{% extends "catalogo/base.html" %}
+{% load formato_chileno %}
+
+{% block title %}Realizar pedido | Tienda de Juegos{% endblock %}
+
+{% block content %}
+<section class="formulario-pedido">
+    <p class="etiqueta">{{ juego.categoria.nombre }}</p>
+    <h1>Realizar pedido</h1>
+    <div class="resumen-juego">
+        {% if juego.imagen %}
+            <img src="{{ juego.imagen.url }}" alt="Caja de {{ juego.nombre }}">
+        {% else %}
+            <div class="imagen-reemplazo">Imagen no disponible</div>
+        {% endif %}
+        <div>
+            <h2>{{ juego.nombre }}</h2>
+            <p class="precio">{{ juego.precio|pesos_chilenos }} por unidad</p>
+            <p>Stock disponible: {{ juego.stock }}</p>
+            <p>Máximo permitido por pedido: 5 unidades.</p>
+        </div>
+    </div>
+
+    <form method="post" novalidate>
+        {% csrf_token %}
+        {% if formulario.non_field_errors %}
+            <div class="errores-generales">
+                {{ formulario.non_field_errors }}
+            </div>
+        {% endif %}
+        {% for campo in formulario %}
+            <div class="campo-formulario">
+                {{ campo.label_tag }}
+                {{ campo }}
+                {% for error in campo.errors %}
+                    <p class="mensaje-error">{{ error }}</p>
+                {% endfor %}
+            </div>
+        {% endfor %}
+        <button type="submit">Confirmar pedido</button>
+        <a class="enlace-secundario" href="{% url 'catalogo:detalle_juego' juego.id %}">Volver al detalle</a>
+    </form>
+</section>
+{% endblock %}
