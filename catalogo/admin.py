@@ -16,7 +16,7 @@ class JuegoAdmin(admin.ModelAdmin):
         "id",
         "nombre",
         "categoria",
-        "precio",
+        "precio_chileno",
         "cantidad_jugadores",
         "edad_minima",
         "stock",
@@ -26,6 +26,10 @@ class JuegoAdmin(admin.ModelAdmin):
     search_fields = ("nombre", "descripcion", "categoria__nombre")
     ordering = ("nombre",)
     list_editable = ("stock", "disponible")
+
+    @admin.display(description="Precio", ordering="precio")
+    def precio_chileno(self, obj):
+        return f"${obj.precio:,}".replace(",", ".")
 
 
 @admin.register(Pedido)
