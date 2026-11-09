@@ -1,0 +1,33 @@
+{% extends "catalogo/base.html" %}
+{% load formato_chileno %}
+
+{% block title %}{{ juego.nombre }} | Tienda de Juegos{% endblock %}
+
+{% block content %}
+<article class="detalle">
+    <div class="detalle-imagen">
+        {% if juego.imagen %}
+            <img src="{{ juego.imagen.url }}" alt="Caja de {{ juego.nombre }}">
+        {% else %}
+            <div class="imagen-reemplazo">Imagen no disponible</div>
+        {% endif %}
+    </div>
+    <div class="detalle-contenido">
+        <p class="etiqueta">{{ juego.categoria.nombre }}</p>
+        <h1>{{ juego.nombre }}</h1>
+        <p class="precio">{{ juego.precio|pesos_chilenos }}</p>
+        <p class="descripcion">{{ juego.descripcion }}</p>
+        <dl class="datos-juego">
+            <div><dt>Jugadores</dt><dd>{{ juego.cantidad_jugadores }}</dd></div>
+            <div><dt>Edad mínima</dt><dd>{{ juego.edad_minima }} años</dd></div>
+            <div><dt>Stock</dt><dd>{{ juego.stock }}</dd></div>
+        </dl>
+        {% if juego.stock > 0 %}
+            <p class="estado disponible">Disponible para solicitar</p>
+        {% else %}
+            <p class="estado agotado">Agotado</p>
+        {% endif %}
+        <a class="boton-secundario" href="{% url 'catalogo:catalogo' %}">Volver al catálogo</a>
+    </div>
+</article>
+{% endblock %}

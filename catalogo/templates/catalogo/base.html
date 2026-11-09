@@ -1,0 +1,28 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Tienda de Juegos{% endblock %}</title>
+    <link rel="stylesheet" href="{% static 'catalogo/css/estilos.css' %}">
+</head>
+<body>
+    <header class="encabezado">
+        <div class="contenedor encabezado-contenido">
+            <a class="marca" href="{% url 'catalogo:catalogo' %}">Tienda de Juegos</a>
+            <nav aria-label="Navegación principal">
+                <a href="{% url 'catalogo:catalogo' %}">Catálogo</a>
+            </nav>
+        </div>
+    </header>
+
+    <main class="contenedor">
+        {% block content %}{% endblock %}
+    </main>
+
+    <footer class="pie">
+        <div class="contenedor">Tienda de Juegos - Catálogo de juegos de mesa</div>
+    </footer>
+</body>
+</html>

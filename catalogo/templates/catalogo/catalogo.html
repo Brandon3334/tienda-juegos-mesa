@@ -1,0 +1,62 @@
+{% extends "catalogo/base.html" %}
+{% load formato_chileno %}
+
+{% block title %}Catálogo | Tienda de Juegos{% endblock %}
+
+{% block content %}
+<section class="intro">
+    <h1>Catálogo de juegos</h1>
+    <p>Encuentra el juego ideal para compartir.</p>
+</section>
+
+<form class="filtros" method="get">
+    <div class="campo">
+        <label for="q">Buscar</label>
+        <input id="q" type="search" name="q" value="{{ consulta }}" placeholder="Nombre o descripción">
+    </div>
+    <div class="campo">
+        <label for="categoria">Categoría</label>
+        <select id="categoria" name="categoria">
+            <option value="">Todas las categorías</option>
+            {% for categoria in categorias %}
+                <option value="{{ categoria.id }}" {% if categoria_seleccionada == categoria.id|stringformat:"s" %}selected{% endif %}>
+                    {{ categoria.nombre }}
+                </option>
+            {% endfor %}
+        </select>
+    </div>
+    <div class="acciones-filtro">
+        <button type="submit">Buscar o filtrar</button>
+        <a class="enlace-secundario" href="{% url 'catalogo:catalogo' %}">Limpiar filtros</a>
+    </div>
+</form>
+
+{% if juegos %}
+    <div class="cuadricula">
+        {% for juego in juegos %}
+            <article class="tarjeta">
+                {% if juego.imagen %}
+                    <img src="{{ juego.imagen.url }}" alt="Caja de {{ juego.nombre }}">
+                {% else %}
+                    <div class="imagen-reemplazo">Imagen no disponible</div>
+                {% endif %}
+                <div class="tarjeta-contenido">
+                    <p class="etiqueta">{{ juego.categoria.nombre }}</p>
+                    <h2>{{ juego.nombre }}</h2>
+                    <p class="precio">{{ juego.precio|pesos_chilenos }}</p>
+                    <p>{{ juego.cantidad_jugadores }} jugadores · Desde {{ juego.edad_minima }} años</p>
+                    <p>Stock: {{ juego.stock }}</p>
+                    {% if juego.stock > 0 %}
+                        <p class="estado disponible">Disponible</p>
+                    {% else %}
+                        <p class="estado agotado">Agotado</p>
+                    {% endif %}
+                    <a class="boton-secundario" href="{% url 'catalogo:detalle_juego' juego.id %}">Ver detalle</a>
+                </div>
+            </article>
+        {% endfor %}
+    </div>
+{% else %}
+    <p class="sin-resultados">No se encontraron juegos con los filtros seleccionados.</p>
+{% endif %}
+{% endblock %}
