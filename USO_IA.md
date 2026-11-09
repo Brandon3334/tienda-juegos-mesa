@@ -16,7 +16,7 @@ La inteligencia artificial se utilizó por etapas:
 5. Configuración del panel administrativo.
 6. Configuración de usuarios, grupo y permisos.
 7. Implementación del catálogo.
-8. Creación de datos e imágenes provisionales.
+8. Creación de datos e imágenes provisionales para las pruebas.
 9. Implementación del flujo de pedidos.
 10. Escritura y ejecución de pruebas.
 11. Documentación y revisión final.
@@ -67,8 +67,8 @@ La inteligencia artificial apoyó la creación o revisión de:
 
 ## Limitaciones y decisiones
 
-- Las imágenes actuales son provisionales y fueron generadas localmente con Pillow.
-- Se reemplazarán por imágenes apropiadas de las cajas antes de la entrega final.
+- Durante las pruebas se generaron imágenes provisionales localmente con Pillow.
+- Posteriormente, esas imágenes fueron sustituidas manualmente por portadas adecuadas de las cajas para la presentación final.
 - La lógica esencial no depende de JavaScript.
 - La generación del código utiliza `secrets`.
 - El control de stock utiliza transacciones.

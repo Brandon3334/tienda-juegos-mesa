@@ -41,7 +41,7 @@ Aplicación web desarrollada con Django para administrar y consultar un catálog
 - `catalogo/templates/`: plantillas HTML del catálogo, detalles, pedidos y comprobantes.
 - `catalogo/static/`: hoja de estilos CSS de la aplicación.
 - `catalogo/templatetags/`: filtro de precios en pesos chilenos.
-- `media/juegos/`: imágenes locales de las cajas de demostración.
+- `media/juegos/`: portadas finales de las cajas, almacenadas localmente.
 - `db.sqlite3`: base de datos SQLite incluida para la evaluación.
 - `manage.py`: utilidad de administración de Django.
 - `requirements.txt`: dependencias necesarias para instalar el proyecto.
@@ -117,7 +117,7 @@ Aplicación web desarrollada con Django para administrar y consultar un catálog
 - 4 pedidos de demostración.
 - Un juego agotado.
 - Un juego no disponible.
-- Imágenes almacenadas localmente.
+- Portadas finales de las cajas almacenadas localmente.
 
 ## Usuarios y permisos
 
